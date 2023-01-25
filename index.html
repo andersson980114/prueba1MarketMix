@@ -8,46 +8,81 @@
     <title>clase 2</title>
 </head>
 <body>
-    <div id="app" class="container mt-5">
-        <div >
-            <div id="titulo">
-                <h1>
-                    Formulario Usuarios
-                </h1>
-            </div>
-            <div class="mt-5">
-                <div class="col mt-3">
-                    <span class="row">Nombres</span>
-                    <input class="row" type="text" v-model="nombres">
-                </div>
-                <div class="col mt-3">
-                    <span class="row">Apellidos</span>
-                    <input class="row" type="text" v-model="apellidos">
-                </div>
-                <div class="col mt-3">
-                    <span class="row">Usuario</span>
-                    <input class="row" type="text" v-model="usuario">
-                </div>
-                <div class="col mt-3">
-                    <span class="row">Fecha Nacimiento</span>
-                    <input class="row" type="date"    v-model="fechaNac">
-                </div>
-            </div>
-            <button @click="agregarUsuario">Agregar</button>
-        </div>
+    <div id="app" class="container ">
 
-        <div class="mt-3" v-for="(usuario, index) of usuarios">
-            <div>
-                {{usuario.nombreCompleto}}
-                {{usuario.usuario}}
-                {{usuario.edad}}
-                {{usuario.clave}}
+        <div class="row mt-2  ">
+            <div  class="card col-4 mt-5 m-3 "style="width: 18rem;">
+                <div class="card-body ">
+                    <div id="titulo">
+                        <h1 class="text-center">
+                            Formulario Usuarios
+                        </h1>
+                    </div>
+                    <div class="mt-5 ">
+                        <div class="col mt-3">
+                            <span class="row">Nombres:</span>
+                            <input class="row form-control my-3" placeholder="Ingresa los nombres" type="text"  v-model="nombres">
+                        </div>
+                        <div class="col mt-3">
+                            <span class="row">Apellidos:</span>
+                            <input class="row form-control my-3"  placeholder="Ingresa los apellidos" type="text" v-model="apellidos">
+                        </div>
+                        <div class="col mt-3">
+                            <span class="row">Usuario:</span>
+                            <input class="row form-control my-3"  placeholder="Ingresa nombre de Usuario" type="text" v-model="usuario">
+                        </div>
+                        <div class="col mt-3">
+                            <span class="row">Fecha Nacimiento:</span>
+                            <input class="row form-control my-2" type="date"    v-model="fechaNac">
+                        </div>
+                    </div>
+                    <div class="col text-right">
+                        <button class="btn btn-primary " @click="agregarUsuario">Agregar</button>
+                    </div>
+    
+                </div>
             </div>
+    
+            <div class="card col-7 mt-5 col-sm" style="width: 18rem;">
+                <div class="card-body">
+                    <div>
+                        <h2 class="text-center">Usuarios</h2>
+                    </div>
+                    
+                    <table class="table"> 
+                        <thead>
+                            <tr>
+                              <th scope="col">Nombre Completo</th>
+                              <th scope="col">Usuario</th>
+                              <th scope="col">Edad</th>
+                              <th scope="col">Clave</th>
+                              
+                            </tr>
+                        </thead>
+
+                        <tbody  v-for="(usuario, index) of usuarios">
+                            
+                            <tr>
+                                <td>{{usuario.nombreCompleto}}</td>
+                                <td>{{usuario.usuario}}</td>
+                                <td>{{usuario.edad}}</td>
+                                <td>{{ usuario.ver? usuario.clave : '** ** ** **'}}</td>
+                                <th scope="col">
+                                    <button class="btn btn-info" @click="verClave(index)">ver</button>
+                                </th>
+                            </tr>
+                        </tbody>
+
+                    </table>
+
+
+                </div>
+            </div>
+
         </div>
 
     </div>
 </body>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <script src="http://momentjs.com/downloads/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script> 
     <script src="main.js"></script>
 </html>
